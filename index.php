@@ -53,7 +53,7 @@ session_start();
 					</ul>
 
 
-					<form action="/logout.php" method="POST" id="logoutForm" style="display: none">
+					<form action="/api/logout.php" method="POST" id="logoutForm" style="display: none">
                                             <input type="submit" name="logout" value="Log Out">
                                         </form>
 
@@ -61,13 +61,28 @@ session_start();
                                             if (isset($_SESSION['currentuser'])) {
                                                 echo '<a class="login logout" onclick="logout()">'.htmlspecialchars($_SESSION['currentuser'], ENT_QUOTES).'</a>';
                                             } else {
-                                                echo '<a class="login" href="/dbtest.php">Log In &gt;</a>';
+                                                echo '<a class="login" href="#" onclick="login()">Log In &gt;</a>';
                                             }
                                         ?>
 
 				</div>
 			</div>
 
+		</div>
+		<div class="loginCredentials" id="loginCredentials">
+                    <form action="/backend/login.php" method="POST" id="loginForm">
+                        <h1>Log In</h1>
+                        <div>
+                            <label for="username">Username</label>
+                            <input type="text" name="username">
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" />
+		       </div>
+                        
+                        <div><div onclick="document.getElementById('loginForm').submit();" class="loginButton">Log In</div></div>
+                    </form>
 		</div>
 		<div class="page-info-middle">
 			<h1>Welcome to the Let's Explore Community Hub!</h1>
